@@ -36,7 +36,7 @@
 				<businessGroup>Apisero</businessGroup>
 				<workers>1</workers>
 				<workerType>Micro</workerType>
-				<muleVersion>4.3.0</muleVersion>
+				<muleVersion>4.4.0</muleVersion>
 				<region>us-east-2</region>
 				<connectedAppClientId>${connectedAppClientId}</connectedAppClientId>
 				<connectedAppClientSecret>${connectedAppClientSecret}</connectedAppClientSecret>
