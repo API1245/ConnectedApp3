@@ -13,6 +13,11 @@ variables:
 - group: Credentialgroup
 
 steps:
+- task: DownloadSecureFile@1
+  name: secureFile
+  displayName: 'Download secure file'
+  inputs:
+        secureFile: settings.xml
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -23,5 +28,5 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'deploy'
-    options: '-DconnectedAppClientId=$(client_id) -DconnectedAppClientSecret=$(client_secret) -DmuleDeploy -DskipTests'
+    options: '-s $(secureFile.secureFilePath) -DconnectedAppClientId=$(client_id) -DconnectedAppClientSecret=$(client_secret) -DmuleDeploy -DskipTests'
 
