@@ -13,6 +13,12 @@ variables:
 - group: Credentialgroup
 
 steps:
+- task: Cache@2
+  displayName: 'Cache Maven local repo'
+  inputs:
+      key: '"funcs" | maven | "$(Agent.OS)" | pom.xml'
+      restoreKeys: |
+      path: $(MAVEN_CACHE_FOLDER)
 - task: DownloadSecureFile@1
   name: secureFile
   displayName: 'Download secure file'
@@ -25,8 +31,8 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
+    publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: '-B package deploy'
+    goals: 'package deploy'
     options: '-s $(secureFile.secureFilePath) -DconnectedAppClientId=$(client_id) -DconnectedAppClientSecret=$(client_secret) -DmuleDeploy -DskipTests'
 
