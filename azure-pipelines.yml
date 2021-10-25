@@ -27,11 +27,11 @@ steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
+    mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
-    publishJUnitResults: false
+    publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package deploy'
     options: '-s $(secureFile.secureFilePath) -DconnectedAppClientId=$(client_id) -DconnectedAppClientSecret=$(client_secret) -DmuleDeploy -DskipTests'
