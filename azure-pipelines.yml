@@ -33,6 +33,6 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: '-B clean package deploy'
+    goals: '-B package deploy'
     options: '-s $(secureFile.secureFilePath) -DconnectedAppClientId=$(client_id) -DconnectedAppClientSecret=$(client_secret) -DmuleDeploy -DskipTests'
 
